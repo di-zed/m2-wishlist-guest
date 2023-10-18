@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author DiZed Team
+ * @copyright Copyright (c) DiZed Team (https://github.com/di-zed/)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="dized_wishlist_guest">
+        <job instance="DiZed\WishlistGuest\Cron\RemoveWishlists" method="execute"
+             name="dized_wishlist_guest_remove_wishlists">
+            <schedule>0 * * * *</schedule>
+        </job>
+    </group>
+</config>

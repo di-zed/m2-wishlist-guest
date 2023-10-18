@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author DiZed Team
+ * @copyright Copyright (c) DiZed Team (https://github.com/di-zed/)
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <!-- Table "wishlist", field "customer_id: can be nullable: -->
+    <table name="wishlist">
+        <column xsi:type="int" name="customer_id" nullable="true"/>
+        <constraint xsi:type="unique" referenceId="WISHLIST_SHARING_CODE">
+            <column name="sharing_code"/>
+        </constraint>
+    </table>
+</schema>

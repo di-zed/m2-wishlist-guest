@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author DiZed Team
+ * @copyright Copyright (c) DiZed Team (https://github.com/di-zed/)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <dized_wishlist_guest>
+            <general>
+                <enabled>0</enabled>
+                <is_guest_wishlist_enabled>0</is_guest_wishlist_enabled>
+                <guest_wishlist_lifetime>86400</guest_wishlist_lifetime>
+                <is_share_url_enabled>0</is_share_url_enabled>
+                <is_shared_product_merged>0</is_shared_product_merged>
+                <is_old_guest_wishlist_removed>0</is_old_guest_wishlist_removed>
+                <guest_wishlist_removing_interval>30</guest_wishlist_removing_interval>
+            </general>
+        </dized_wishlist_guest>
+    </default>
+</config>

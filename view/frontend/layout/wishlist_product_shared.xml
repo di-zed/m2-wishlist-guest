@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author DiZed Team
+ * @copyright Copyright (c) DiZed Team (https://github.com/di-zed/)
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="DiZed\WishlistGuest\Block\Product\Shared"
+                   name="dized.wishlist.guest.product.shared"
+                   template="DiZed_WishlistGuest::product/shared.phtml"
+                   cacheable="false"/>
+        </referenceContainer>
+    </body>
+</page>

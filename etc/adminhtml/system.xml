@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author DiZed Team
+ * @copyright Copyright (c) DiZed Team (https://github.com/di-zed/)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="dized_wishlist_guest" translate="label" type="text" sortOrder="1000" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Wishlist Guest</label>
+            <tab>dized</tab>
+            <resource>DiZed_WishlistGuest::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Status</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="is_guest_wishlist_enabled" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable for Guests</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>
+                        <![CDATA[
+                            Enable the wishlist functionality for the guest customers.
+                        ]]>
+                    </comment>
+                    <depends>
+                        <field id="*/*/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="guest_wishlist_lifetime" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Lifetime of Guest Wishlist</label>
+                    <backend_model>Magento\Cookie\Model\Config\Backend\Lifetime</backend_model>
+                    <comment>
+                        <![CDATA[
+                            Cookie Lifetime of Guest Wishlist in SECONDS. If this field is empty then it will take Magento default value (web/cookie/cookie_lifetime).
+                        ]]>
+                    </comment>
+                    <validate>validate-number required-entry no-whitespace</validate>
+                    <depends>
+                        <field id="*/*/enabled">1</field>
+                        <field id="*/*/is_guest_wishlist_enabled">1</field>
+                    </depends>
+                </field>
+                <field id="is_share_url_enabled" translate="label comment" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Share Wishlist by URL</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>
+                        <![CDATA[
+                            Enable the opportunity to get and send wishlist by special URL address.
+                        ]]>
+                    </comment>
+                    <depends>
+                        <field id="*/*/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="is_shared_product_merged" translate="label comment" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Merge Shared Products</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>
+                        <![CDATA[
+                            If Yes - it will merge shared products to already exist (+1 to quantity), if No - it will just skip the products.
+                        ]]>
+                    </comment>
+                    <depends>
+                        <field id="*/*/enabled">1</field>
+                        <field id="*/*/is_share_url_enabled">1</field>
+                    </depends>
+                </field>
+                <field id="is_old_guest_wishlist_removed" translate="label comment" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Remove Old Guest Wishlists</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>
+                        <![CDATA[
+                            Delete old Guest Wishlists to avoid database overload.
+                        ]]>
+                    </comment>
+                    <depends>
+                        <field id="*/*/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="guest_wishlist_removing_interval" translate="label comment" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Interval for Removing Old Wishlists</label>
+                    <comment>
+                        <![CDATA[
+                            Interval for Removing Old Guest Wishlists in DAYS. Removes old guest wishlists that have not been updated for more than a given number of DAYS.
+                        ]]>
+                    </comment>
+                    <validate>validate-number required-entry no-whitespace</validate>
+                    <depends>
+                        <field id="*/*/enabled">1</field>
+                        <field id="*/*/is_old_guest_wishlist_removed">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

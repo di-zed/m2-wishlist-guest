@@ -1,0 +1,24 @@
+<?php
+/**
+ * @author DiZed Team
+ * @copyright Copyright (c) DiZed Team (https://github.com/di-zed/)
+ */
+
+/** @var Escaper $escaper */
+/** @var Button $block */
+
+use DiZed\WishlistGuest\Block\Customer\Wishlist\Button;
+use Magento\Framework\Escaper;
+
+?>
+
+<?php if ($sharedUrl = $block->getSharedUrl()): ?>
+    <button type="button"
+            name="copy_link_for_sharing"
+            title="<?= $escaper->escapeHtmlAttr(__('Copy Link for Sharing')) ?>"
+            class="action copy-link-for-sharing"
+            data-shared-url="<?= $escaper->escapeHtmlAttr($sharedUrl) ?>"
+            data-mage-init='{"wishlistButtonShareLink": {}}'>
+        <span><?= $escaper->escapeHtml(__('Copy Link for Sharing')) ?></span>
+    </button>
+<?php endif; ?>

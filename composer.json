@@ -1,0 +1,27 @@
+{
+    "name": "dized/module-wishlist-guest",
+    "description": "Additional Wishlist functionality for the Magento 2 project",
+    "version": "1.0.0",
+    "keywords": ["dized", "wishlist", "guest", "share", "url", "module", "magento"],
+    "type": "magento2-module",
+    "license": "MIT",
+    "homepage": "https://github.com/di-zed/m2-wishlist-guest",
+    "authors": [
+        {
+            "name": "DiZed Team",
+            "email": "d1ma.7.zed@gmail.com"
+        }
+    ],
+    "require": {
+        "dized/module-core": "^1.0.1",
+        "magento/module-wishlist": "*"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "DiZed\\WishlistGuest\\": ""
+        }
+    }
+}

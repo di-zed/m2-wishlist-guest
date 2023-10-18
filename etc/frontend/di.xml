@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author DiZed Team
+ * @copyright Copyright (c) DiZed Team (https://github.com/di-zed/)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Plugin for the Wishlist Before Dispatch plugin. -->
+    <type name="Magento\Wishlist\Controller\Index\Plugin">
+        <plugin name="DiZed_WishlistGuest::ControllerIndexPlugin"
+                type="DiZed\WishlistGuest\Plugin\Wishlist\Controller\Index\Plugin"/>
+    </type>
+    <!-- Plugin for the wishlist provider. -->
+    <type name="Magento\Wishlist\Controller\WishlistProviderInterface">
+        <plugin name="DiZed_WishlistGuest::ControllerProvider"
+                type="DiZed\WishlistGuest\Plugin\Wishlist\Controller\WishlistProviderInterface"/>
+    </type>
+    <!-- Plugin for the Wishlist Index controller. -->
+    <type name="Magento\Wishlist\Controller\Index\Index">
+        <plugin name="DiZed_WishlistGuest::ControllerIndexIndex"
+                type="DiZed\WishlistGuest\Plugin\Wishlist\Controller\Index\Index"/>
+    </type>
+    <!-- Plugin for the Wishlist Share controller. -->
+    <type name="Magento\Wishlist\Controller\Index\Share">
+        <plugin name="DiZed_WishlistGuest::ControllerIndexShare"
+                type="DiZed\WishlistGuest\Plugin\Wishlist\Controller\Index\Share"/>
+    </type>
+    <!-- Plugin for the Wishlist Add controller. -->
+    <type name="Magento\Wishlist\Controller\Index\Add">
+        <plugin name="DiZed_WishlistGuest::ControllerIndexAdd"
+                type="DiZed\WishlistGuest\Plugin\Wishlist\Controller\Index\Add"/>
+    </type>
+    <!-- Plugin for the Wishlist Customer Login observer. -->
+    <type name="Magento\Wishlist\Observer\CustomerLogin">
+        <plugin name="DiZed_WishlistGuest::ObserverCustomerLogin"
+                type="DiZed\WishlistGuest\Plugin\Wishlist\Observer\CustomerLogin"/>
+    </type>
+    <!-- Change the Customer View helper for the wishlist sending process. -->
+    <type name="Magento\Wishlist\Controller\Index\Send">
+        <arguments>
+            <argument name="customerHelperView" xsi:type="object">DiZed\WishlistGuest\Helper\Customer\View</argument>
+        </arguments>
+    </type>
+</config>

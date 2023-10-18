@@ -1,0 +1,58 @@
+<?php
+/**
+ * @author DiZed Team
+ * @copyright Copyright (c) DiZed Team (https://github.com/di-zed/)
+ */
+
+/** @var Escaper $escaper */
+/** @var Shared $block */
+
+use DiZed\WishlistGuest\Block\Product\Shared;
+use Magento\Framework\Escaper;
+
+$wishlist = $block->getWishlist();
+?>
+
+<table class="cart wishlist-shared">
+    <tbody>
+        <?php foreach ($block->getSharedWishlistItems() as $sharedWishlistItem): ?>
+            <?php $sharedProduct = $sharedWishlistItem->getProduct(); ?>
+            <tr>
+                <td class="col item-image">
+                    <img src="<?= $escaper->escapeUrl($block->getProductBlock()->getImage($sharedProduct, 'product_thumbnail_image')->getImageUrl()) ?>"
+                         alt="<?= $escaper->escapeHtmlAttr($sharedProduct->getName()) ?>"/>
+                </td>
+                <td class="col item-info">
+                    <strong><?= $escaper->escapeHtml($sharedProduct->getName()) ?></strong>
+                </td>
+                <td class="col qty">
+                    <?= /* @noEscape */ (int)$sharedWishlistItem->getQty() ?>
+                </td>
+                <td class="col qty">
+                    <?php if ($wishlistItem = $block->getWishlistItemByProductId($sharedProduct->getId(), $wishlist)): ?>
+                        <span>
+                            <?= $escaper->escapeHtml(__('Already on the wishlist')) ?>
+                            (<?= /* @noEscape */ (int)$wishlistItem->getQty() ?>)
+                        </span>
+                    <?php endif; ?>
+                </td>
+                <td class="col addtobasket">
+                    <a href="#" data-post='<?= $escaper->escapeHtmlAttr($block->getProductBlock()->getAddToWishlistParams($sharedProduct)) ?>'>
+                        <span><?= $escaper->escapeHtml(__('Add to Wish List')) ?></span>
+                    </a>
+                </td>
+                <td class="col qty">
+                    <strong><?= /* @noEscape */ $block->getProductBlock()->getProductPrice($sharedProduct) ?></strong>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+
+<button type="button"
+        name="merge_to_wishlist"
+        title="<?= $escaper->escapeHtmlAttr(__('Merge into my wishlist')) ?>"
+        class="action merge-to-wishlist"
+        data-post='<?= $escaper->escapeHtmlAttr($block->getMergePostData()) ?>'>
+    <span><?= $escaper->escapeHtml(__('Merge into my wishlist')) ?></span>
+</button>

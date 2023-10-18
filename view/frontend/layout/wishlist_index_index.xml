@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author DiZed Team
+ * @copyright Copyright (c) DiZed Team (https://github.com/di-zed/)
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="customer.wishlist" class="DiZed\WishlistGuest\Block\Customer\Wishlist"/>
+        <referenceContainer name="customer.wishlist.buttons">
+            <block class="DiZed\WishlistGuest\Block\Customer\Wishlist\Button"
+                   name="customer.wishlist.button.share_link"
+                   template="DiZed_WishlistGuest::button/share_link.phtml"
+                   cacheable="false"/>
+        </referenceContainer>
+    </body>
+</page>
